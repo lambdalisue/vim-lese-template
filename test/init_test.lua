@@ -1,0 +1,11 @@
+local t = require("lese.testing")
+local custom = require("lese.custom")
+
+t.describe("lese-zorvex.define_pickers", function()
+  t.it("declares the zorvex-word picker", function()
+    custom.load_function(function(x)
+      require("lese-zorvex").define_pickers(x)
+    end)
+    t.eq(custom.names(), { "zorvex-word" })
+  end)
+end)

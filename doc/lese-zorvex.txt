@@ -1,0 +1,70 @@
+*lese-zorvex.txt*	An extension for lese, the fuzzy finder for Vim and Neovim
+
+Author:  Alisue <lambdalisue@gmail.com>
+License: MIT License (See LICENSE)
+
+=============================================================================
+CONTENTS					*lese-zorvex-contents*
+
+INTRODUCTION			|lese-zorvex-introduction|
+REQUIREMENTS			|lese-zorvex-requirements|
+USAGE				|lese-zorvex-usage|
+INTERFACE			|lese-zorvex-interface|
+  PICKERS			|lese-zorvex-pickers|
+  MODULES			|lese-zorvex-modules|
+
+=============================================================================
+INTRODUCTION					*lese-zorvex-introduction*
+
+lese-zorvex adds modules and pickers to lese. Loading it declares nothing;
+bring its pickers in from your custom.lua (|lese-zorvex-usage|).
+
+=============================================================================
+REQUIREMENTS					*lese-zorvex-requirements*
+
+lese (https://github.com/lambdalisue/vim-lese) on Neovim, or on Vim built
+with |+lua|.
+
+=============================================================================
+USAGE						*lese-zorvex-usage*
+
+Call |lese-zorvex.define_pickers()| from the function your custom.lua
+returns (:LeseCustom opens it):
+>lua
+	return function(x)
+	  -- ... your own pickers ...
+	  require("lese-zorvex").define_pickers(x)
+	end
+<
+Or use the modules in pickers of your own (|lese-zorvex-modules|).
+
+=============================================================================
+INTERFACE					*lese-zorvex-interface*
+
+-----------------------------------------------------------------------------
+PICKERS						*lese-zorvex-pickers*
+
+					*lese-zorvex.define_pickers()*
+require("lese-zorvex").define_pickers({x})
+	Declare the pickers below on the entrypoint {x} custom.lua receives.
+
+						*lese-zorvex-picker-zorvex-word*
+:Lese zorvex-word [{file}]
+	The words of the current buffer, or of {file}, each once.
+
+-----------------------------------------------------------------------------
+MODULES						*lese-zorvex-modules*
+
+					*lese-zorvex.source.word*
+require("lese-zorvex.source.word")([{opts}])
+	A source that emits each word (a run of ASCII letters, digits and
+	underscores) of the buffer or file in its first argument, or of the
+	current buffer, once, in the order the words first occur. The detail
+	holds `bufnr`, and the `line` and `column` where the word first occurs.
+
+	{opts} may hold:
+	  min_length	Skip shorter words. Default: 1
+	  chunk_size	Lines read at once. Default: 1000
+
+=============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
