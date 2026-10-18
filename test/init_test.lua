@@ -1,6 +1,12 @@
 local t = require("lese.testing")
 local custom = require("lese.custom")
 
+t.describe("lese-zorvex", function()
+  t.it("exposes its sources", function()
+    t.eq(require("lese-zorvex").source.word, require("lese-zorvex.source.word"))
+  end)
+end)
+
 t.describe("lese-zorvex.define_pickers", function()
   t.it("declares the zorvex-word picker", function()
     custom.load_function(function(x)

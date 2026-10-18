@@ -1,10 +1,12 @@
 local define = require("lese.define")
 
+---The detail of an item lese-zorvex.source.word emits.
 ---@class lese-zorvex.source.WordDetail
 ---@field bufnr integer   -- the buffer the word was read from
 ---@field line integer    -- 1-based line where the word first occurs
 ---@field column integer  -- 1-based byte column where the word first occurs
 
+---Options of lese-zorvex.source.word.
 ---@class lese-zorvex.source.WordOptions
 ---@field min_length? integer  -- shorter words are skipped, default 1
 ---@field chunk_size? integer  -- lines read at once, default 1000

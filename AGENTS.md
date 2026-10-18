@@ -72,6 +72,12 @@ both editors. The module format is specified in vim-lese's
   `system()`.
 - Modules that take options are functions returning the module; users always
   call them, options or not.
+- Describe everything users can reach, for lua-language-server: a `---`
+  line on every public function, every class and every `---@field`
+  (trailing `-- text` or a `---Text.` line above it). `require("lese-zorvex")`
+  returns a table declared as the class `lese-zorvex`, with a described field
+  per module, so hovering `require("lese-zorvex").source.word` in custom.lua
+  says what it does.
 - The extension adds no picker by itself and has no `plugin/` directory.
   `require("lese-zorvex").define_pickers(x)` declares its recommended pickers
   for users to call from their `custom.lua`.
