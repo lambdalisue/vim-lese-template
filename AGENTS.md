@@ -20,8 +20,9 @@ rm -r test/__snapshots__ && just deps && just snapshot  # their file names carry
 rg -i zorvex; rg --files | rg -i zorvex                 # both must print nothing
 ```
 
-Then delete this section and the provisional-name line above, run `just ci`,
-and replace the sample source with the extension's own modules.
+Then delete this section, the provisional-name line above, and the template
+note and "Start an extension" section of `README.md`; run `just ci`, and
+replace the sample source with the extension's own modules.
 
 ## How it is built
 
